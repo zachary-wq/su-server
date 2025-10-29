@@ -23,5 +23,12 @@ module SuServer
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Enable CSRF protection in API mode.
+    config.action_controller.default_protect_from_forgery = true
+
+    # Filter sensitive parameters from the log file.
+    config.filter_parameters << :password
+
   end
 end

@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+```shell
+
+bundle install
+```
+> 国内需要修改使用清华源加速

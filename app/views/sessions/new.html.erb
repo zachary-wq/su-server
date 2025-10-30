@@ -1,72 +1,103 @@
 <% provide :title, t("sessions.new.title") %>
 
-<div class="grid min-h-screen lg:grid-cols-2">
-  <div class="flex flex-col justify-center px-6 py-16 sm:px-12 lg:px-24">
-    <div class="mx-auto w-full max-w-md space-y-10">
-      <div class="space-y-2 text-center lg:text-left">
-        <p class="text-sm font-semibold uppercase tracking-wide text-slate-500"><%= t("sessions.new.welcome") %></p>
-        <h1 class="text-3xl font-semibold tracking-tight text-slate-900"><%= t("sessions.new.headline") %></h1>
-        <p class="text-sm text-slate-600"><%= t("sessions.new.description") %></p>
-      </div>
+<div class="flex min-h-screen items-center justify-center bg-slate-100 px-4 py-12">
+  <div class="grid w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 lg:grid-cols-[1.1fr_1fr]">
+    <div class="px-6 py-12 sm:px-12 lg:px-16">
+      <div class="mx-auto w-full max-w-sm space-y-10">
+        <div class="space-y-2 text-center lg:text-left">
+          <h1 class="text-3xl font-semibold tracking-tight text-slate-900"><%= t("sessions.new.welcome") %></h1>
+          <p class="text-sm text-slate-600"><%= t("sessions.new.description") %></p>
+        </div>
 
-      <div class="space-y-4">
-        <%= render "shared/flash" %>
+        <div class="space-y-6">
+          <%= render "shared/flash" %>
 
-        <%= form_with url: session_path, class: "space-y-6" do |form| %>
-          <% input_classes = "flex h-11 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 transition" %>
+          <%= form_with url: session_path, class: "space-y-6" do |form| %>
+            <% input_classes = "flex h-11 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm shadow-sm placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" %>
 
-          <div class="space-y-2">
-            <%= form.label :email_address, t("sessions.new.email_label"), class: "text-sm font-medium text-slate-700" %>
-            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t("sessions.new.email_placeholder"), value: params[:email_address], class: input_classes %>
-          </div>
-
-          <div
-            class="space-y-2"
-            data-controller="password-visibility"
-            data-password-visibility-show-label-value="<%= t("auth.password_visibility.show") %>"
-            data-password-visibility-hide-label-value="<%= t("auth.password_visibility.hide") %>"
-          >
-            <div class="flex items-center justify-between">
-              <%= form.label :password, t("sessions.new.password_label"), class: "text-sm font-medium text-slate-700" %>
-              <%= link_to t("sessions.new.forgot_password"), new_password_path, class: "text-sm font-medium text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline" %>
+            <div class="space-y-2 text-left">
+              <%= form.label :email_address, t("sessions.new.email_label"), class: "text-sm font-medium text-slate-700" %>
+              <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t("sessions.new.email_placeholder"), value: params[:email_address], class: input_classes %>
             </div>
-            <div class="relative">
-              <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, placeholder: t("sessions.new.password_placeholder"), class: input_classes, data: { password_visibility_target: "input" } %>
-              <button type="button" class="absolute inset-y-0 right-0 flex items-center px-3 text-sm font-medium text-slate-600 hover:text-slate-900" data-action="password-visibility#toggle">
-                <span data-password-visibility-target="label"><%= t("auth.password_visibility.show") %></span>
-              </button>
+
+            <div
+              class="space-y-2 text-left"
+              data-controller="password-visibility"
+              data-password-visibility-show-label-value="<%= t("auth.password_visibility.show") %>"
+              data-password-visibility-hide-label-value="<%= t("auth.password_visibility.hide") %>"
+            >
+              <div class="flex items-center justify-between">
+                <%= form.label :password, t("sessions.new.password_label"), class: "text-sm font-medium text-slate-700" %>
+                <%= link_to t("sessions.new.forgot_password"), new_password_path, class: "text-sm font-medium text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline" %>
+              </div>
+              <div class="relative">
+                <%= form.password_field :password, required: true, autocomplete: "current-password", maxlength: 72, placeholder: t("sessions.new.password_placeholder"), class: input_classes, data: { password_visibility_target: "input" } %>
+                <button type="button" class="absolute inset-y-0 right-0 flex items-center px-3 text-sm font-medium text-slate-600 hover:text-slate-900" data-action="password-visibility#toggle">
+                  <span data-password-visibility-target="label"><%= t("auth.password_visibility.show") %></span>
+                </button>
+              </div>
+            </div>
+
+            <%= form.submit t("sessions.new.submit"), class: "inline-flex w-full items-center justify-center rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" %>
+          <% end %>
+
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-slate-200"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="bg-white px-2 text-slate-500"><%= t("sessions.new.or_continue") %></span>
             </div>
           </div>
 
-          <div class="space-y-4">
-            <%= form.submit t("sessions.new.submit"), class: "inline-flex w-full items-center justify-center rounded-md bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2" %>
-          </div>
-        <% end %>
-      </div>
+          <div class="grid gap-3 sm:grid-cols-3">
+            <%= link_to "#", class: "inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path d="M16.365 1.43c0 1.14-.416 2.094-1.248 2.863-.833.753-1.83 1.154-2.99 1.2-.033-.132-.05-.332-.05-.6 0-1.08.387-1.98 1.16-2.7.773-.733 1.673-1.1 2.7-1.1.14 0 .27.013.388.038.033.1.05.2.05.3 0 .027-.003.067-.01.12-.007.053-.01.093-.01.12-.007.067-.01.12-.01.16-.007.053-.01.12-.01.2c0 .067.003.133.01.2.007.053.01.133.01.24Z" />
+                <path fill-rule="evenodd" d="M20.848 16.444c-.46.98-1.124 1.787-1.99 2.422-.867.62-1.81.93-2.83.93-.7 0-1.43-.183-2.19-.55-.747-.367-1.41-.55-1.99-.55-.62 0-1.313.183-2.08.55-.767.367-1.46.55-2.08.55-1.18 0-2.247-.373-3.2-1.12-.94-.76-1.637-1.733-2.09-2.92-.447-1.213-.67-2.4-.67-3.56 0-1.327.293-2.53.88-3.61.573-1.08 1.334-1.933 2.28-2.56.94-.64 1.943-.96 3.01-.96.707 0 1.467.173 2.28.52.807.34 1.473.513 2 .52.427 0 1.1-.193 2.02-.58.813-.33 1.513-.467 2.1-.41 1.553.127 2.733.74 3.54 1.84-1.4.867-2.1 2.067-2.1 3.6 0 1.2.44 2.2 1.32 3 0 .033-.017.1-.05.2-.033.1-.05.167-.05.2-.033.1-.057.183-.07.25-.02.053-.047.14-.08.26Z" clip-rule="evenodd" />
+              </svg>
+              <span><%= t("sessions.new.social.apple") %></span>
+            <% end %>
 
-      <p class="text-center text-sm text-slate-600">
-        <%= t("sessions.new.no_account") %>
-        <%= link_to t("sessions.new.sign_up"), new_registration_path, class: "font-medium text-slate-900 underline-offset-4 hover:underline" %>
-      </p>
+            <%= link_to "#", class: "inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
+                <path fill="#4285F4" d="M23.52 12.27c0-.78-.07-1.53-.2-2.27H12v4.3h6.44c-.28 1.5-1.12 2.78-2.38 3.64v3h3.84c2.25-2.07 3.52-5.12 3.52-8.67Z" />
+                <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.95-2.92l-3.84-3c-1.07.72-2.44 1.15-4.11 1.15-3.16 0-5.83-2.13-6.79-5h-3.9v3.09C3.29 21.53 7.31 24 12 24Z" />
+                <path fill="#FBBC05" d="M5.21 14.23c-.24-.72-.38-1.5-.38-2.23s.14-1.51.38-2.23V6.68h-3.9A11.93 11.93 0 0 0 0 12c0 1.93.46 3.76 1.31 5.32l3.9-3.09Z" />
+                <path fill="#EA4335" d="M12 4.75c1.76 0 3.34.6 4.58 1.78l3.43-3.43C17.95 1.15 15.24 0 12 0 7.31 0 3.29 2.47 1.31 6.68l3.9 3.09c.96-2.87 3.63-5.02 6.79-5.02Z" />
+              </svg>
+              <span><%= t("sessions.new.social.google") %></span>
+            <% end %>
+
+            <%= link_to "#", class: "inline-flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50" do %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path fill-rule="evenodd" d="M12.026 2c2.032 0 3.637.664 4.814 1.99 1.176 1.326 1.765 3.18 1.765 5.563 0 2.05-.574 3.664-1.722 4.843-.3.31-.44.579-.42.807.02.228.18.498.48.81l.69.733c.92.98 1.38 1.98 1.38 3 0 1.28-.536 2.398-1.61 3.357-1.073.96-2.35 1.44-3.83 1.44-1.14 0-2.15-.244-3.03-.733-.88-.488-1.574-1.17-2.08-2.045-.507-.874-.76-1.863-.76-2.967 0-1.4.44-2.6 1.32-3.6.18-.22.26-.47.24-.75-.02-.28-.16-.54-.42-.78-1.18-1.21-1.77-2.79-1.77-4.74 0-2.383.588-4.237 1.765-5.563C8.402 2.665 10.005 2 12.026 2Zm3.305 17.294c0-.58-.2-1.12-.6-1.62-.4-.5-.98-.93-1.74-1.29-.15-.06-.3-.08-.45-.08-.17 0-.33.03-.48.1-.15.07-.28.17-.39.3-.38.45-.57.96-.57 1.54 0 .58.2 1.12.6 1.62.4.5.98.94 1.74 1.3.15.06.3.09.45.09.16 0 .31-.03.46-.1.15-.07.28-.17.39-.3.38-.45.57-.97.57-1.55Zm.8-11.4c0-1.25-.27-2.28-.82-3.09-.54-.82-1.31-1.23-2.3-1.23-1 0-1.78.41-2.33 1.24-.56.83-.84 1.87-.84 3.13 0 1.27.28 2.32.84 3.16.55.83 1.33 1.25 2.33 1.25s1.78-.42 2.32-1.25c.55-.84.82-1.9.82-3.21Z" clip-rule="evenodd" />
+              </svg>
+              <span><%= t("sessions.new.social.github") %></span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="space-y-4 text-center text-sm text-slate-600">
+          <p>
+            <%= t("sessions.new.no_account") %>
+            <%= link_to t("sessions.new.sign_up"), new_registration_path, class: "font-medium text-slate-900 underline-offset-4 hover:underline" %>
+          </p>
+          <p class="text-xs text-slate-500">
+            <%= t("sessions.new.disclaimer_html", terms: link_to(t("sessions.new.terms"), "#", class: "font-medium text-slate-900 hover:underline"), privacy: link_to(t("sessions.new.privacy"), "#", class: "font-medium text-slate-900 hover:underline")) %>
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="relative hidden bg-slate-900 lg:block">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(148,163,184,0.35),_transparent_60%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.8),_rgba(15,23,42,1))]"></div>
-    <div class="relative flex h-full flex-col justify-between p-16 text-slate-100">
-      <div class="space-y-4">
-        <span class="inline-flex items-center rounded-full bg-slate-800/70 px-3 py-1 text-xs font-medium uppercase tracking-wide"><%= t("sessions.new.badge") %></span>
-        <h2 class="text-3xl font-semibold tracking-tight"><%= t("sessions.new.promo_heading") %></h2>
-        <p class="max-w-sm text-sm text-slate-300"><%= t("sessions.new.promo_text") %></p>
-      </div>
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-        <p class="text-sm text-slate-200"><%= t("sessions.new.quote") %></p>
-        <div class="mt-4 flex items-center gap-3">
-          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 text-sm font-semibold">SU</span>
-          <div>
-            <p class="text-sm font-semibold text-white"><%= t("sessions.new.quote_author") %></p>
-            <p class="text-xs text-slate-300"><%= t("sessions.new.quote_role") %></p>
-          </div>
+    <div class="relative hidden bg-slate-50 lg:block">
+      <div class="absolute inset-6 rounded-3xl border border-dashed border-slate-200"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="flex h-32 w-32 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-400">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-12 w-12">
+            <circle cx="12" cy="12" r="9" class="text-slate-200" />
+            <path d="M12 8v8m-4-4h8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
       </div>
     </div>

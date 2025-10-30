@@ -30,5 +30,7 @@ module SuServer
     # Filter sensitive parameters from the log file.
     config.filter_parameters << :password
 
+    config.i18n.available_locales = [:en, :'zh-CN']
+    config.i18n.default_locale = :en
   end
 end

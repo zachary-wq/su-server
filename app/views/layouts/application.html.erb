@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Su Server" %></title>
+    <title><%= content_for(:title) || t("layouts.application.title") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Su Server">
@@ -23,8 +23,21 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <header class="absolute right-6 top-6 z-10 text-sm text-slate-600">
+      <nav class="flex items-center gap-3">
+        <% I18n.available_locales.each do |locale| %>
+          <% locale_name = t("layouts.application.languages.#{locale}") %>
+          <% if locale == I18n.locale %>
+            <span class="font-semibold text-slate-900"><%= locale_name %></span>
+          <% else %>
+            <%= link_to locale_name, url_for(locale: locale), class: "hover:underline" %>
+          <% end %>
+        <% end %>
+      </nav>
+    </header>
+
+    <main class="min-h-screen">
       <%= yield %>
     </main>
   </body>

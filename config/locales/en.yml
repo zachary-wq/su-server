@@ -1,31 +1,85 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: "Su Server"
+      languages:
+        en: "English"
+        "zh-CN": "简体中文"
+  auth:
+    rate_limit: "Try again later."
+    password_visibility:
+      show: "Show"
+      hide: "Hide"
+    sessions:
+      create:
+        alert: "Try another email address or password."
+    registrations:
+      create:
+        success: "Welcome! Your account has been created."
+        failure: "We couldn’t save your account."
+    passwords:
+      create:
+        notice: "Password reset instructions sent (if user with that email address exists)."
+      update:
+        success: "Password has been reset."
+        failure: "Passwords did not match."
+      expired: "Password reset link is invalid or has expired."
+  sessions:
+    new:
+      title: "Sign in"
+      welcome: "Welcome back"
+      headline: "Sign in to your account"
+      description: "Enter your credentials to access your dashboard."
+      email_label: "Email address"
+      email_placeholder: "you@example.com"
+      password_label: "Password"
+      password_placeholder: "Enter your password"
+      forgot_password: "Forgot password?"
+      submit: "Sign in"
+      no_account: "Don't have an account?"
+      sign_up: "Create an account"
+      badge: "Secure access"
+      promo_heading: "Built for fast, modern Rails apps"
+      promo_text: "Streamlined authentication screens inspired by the shadcn/ui login-05 block. Designed with Tailwind CSS and Hotwire for a delightful developer experience."
+      quote: "“The combination of Turbo, Stimulus, and Tailwind keeps our authentication flow fast, accessible, and easy to maintain.”"
+      quote_author: "Rails Team"
+      quote_role: "Product Engineering"
+  registrations:
+    new:
+      title: "Create account"
+      welcome: "Get started"
+      headline: "Create your account"
+      description: "Join the platform and start building with Turbo, Stimulus, and Tailwind."
+      email_label: "Email address"
+      email_placeholder: "you@example.com"
+      password_label: "Password"
+      password_placeholder: "Create a password"
+      password_help: "Use at least 12 characters with numbers, letters, and symbols."
+      password_confirmation_label: "Confirm password"
+      password_confirmation_placeholder: "Confirm your password"
+      submit: "Create account"
+      has_account: "Already have an account?"
+      sign_in: "Sign in"
+      error_summary: "Please review the highlighted fields."
+      badge: "Built for teams"
+      promo_heading: "Move quickly with modern Rails patterns"
+      promo_text: "Handle onboarding with confidence. These auth screens embrace the shadcn/ui login-05 aesthetic while staying faithful to the Rails way."
+      quote: "“Hotwire lets us keep interactions snappy without leaving the comfort of server-rendered Rails views.”"
+      quote_author: "Core Maintainers"
+      quote_role: "Superuser Platform"
+  passwords:
+    new:
+      title: "Forgot password"
+      welcome: "Password reset"
+      headline: "Recover access to your account"
+      description: "Enter the email address associated with your account and we'll send reset instructions."
+      email_label: "Email address"
+      email_placeholder: "you@example.com"
+      submit: "Send reset instructions"
+      back: "Back to sign in"
+      badge: "Stay secure"
+      promo_heading: "Protecting your account is our priority"
+      promo_text: "Forgot your password? No worries. Our Hotwire-powered reset flow keeps you on track without sacrificing speed or usability."
+      quote: "“Turbo Streams make it effortless to deliver feedback instantly, so users know exactly what to expect next.”"
+      quote_author: "Security Team"
+      quote_role: "Superuser Platform"

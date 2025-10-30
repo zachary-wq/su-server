@@ -1,0 +1,85 @@
+"zh-CN":
+  layouts:
+    application:
+      title: "Su Server"
+      languages:
+        en: "英文"
+        "zh-CN": "简体中文"
+  auth:
+    rate_limit: "请稍后再试。"
+    password_visibility:
+      show: "显示"
+      hide: "隐藏"
+    sessions:
+      create:
+        alert: "请检查邮箱或密码是否正确。"
+    registrations:
+      create:
+        success: "欢迎加入！您的账号已创建。"
+        failure: "我们无法保存您的账号信息。"
+    passwords:
+      create:
+        notice: "如果邮箱已注册，我们会发送一封包含重置说明的邮件。"
+      update:
+        success: "密码已成功重置。"
+        failure: "两次输入的密码不一致。"
+      expired: "重置链接已失效或过期。"
+  sessions:
+    new:
+      title: "登录"
+      welcome: "欢迎回来"
+      headline: "登录到您的账号"
+      description: "请输入登录凭据以访问控制台。"
+      email_label: "邮箱地址"
+      email_placeholder: "you@example.com"
+      password_label: "密码"
+      password_placeholder: "请输入密码"
+      forgot_password: "忘记密码？"
+      submit: "登录"
+      no_account: "还没有账号？"
+      sign_up: "立即注册"
+      badge: "安全访问"
+      promo_heading: "为现代 Rails 应用而生"
+      promo_text: "灵感来自 shadcn/ui login-05 的登录界面，结合 Tailwind CSS 与 Hotwire，打造顺滑的体验。"
+      quote: "“Turbo、Stimulus 与 Tailwind 的组合让我们的认证流程快速、易用且易于维护。”"
+      quote_author: "Rails 团队"
+      quote_role: "产品工程"
+  registrations:
+    new:
+      title: "创建账号"
+      welcome: "立即开始"
+      headline: "创建您的账号"
+      description: "加入平台，立即体验 Turbo、Stimulus 与 Tailwind 的组合。"
+      email_label: "邮箱地址"
+      email_placeholder: "you@example.com"
+      password_label: "密码"
+      password_placeholder: "设置密码"
+      password_help: "密码至少 12 个字符，并包含数字、字母与符号。"
+      password_confirmation_label: "确认密码"
+      password_confirmation_placeholder: "再次输入密码"
+      submit: "创建账号"
+      has_account: "已经有账号？"
+      sign_in: "去登录"
+      error_summary: "请检查标记出的字段。"
+      badge: "团队协作"
+      promo_heading: "以现代 Rails 模式快速前进"
+      promo_text: "这些认证界面保留 shadcn/ui login-05 的美感，同时忠于 Rails 风格。"
+      quote: "“Hotwire 让交互保持流畅，同时继续享受服务端渲染带来的舒适感。”"
+      quote_author: "核心维护者"
+      quote_role: "Superuser 平台"
+  passwords:
+    new:
+      title: "忘记密码"
+      welcome: "重置密码"
+      headline: "找回您的账号"
+      description: "请输入注册时使用的邮箱，我们将发送密码重置说明。"
+      email_label: "邮箱地址"
+      email_placeholder: "you@example.com"
+      submit: "发送重置邮件"
+      back: "返回登录"
+      badge: "保持安全"
+      promo_heading: "账户安全始终是首要任务"
+      promo_text: "忘记密码也不用担心。借助 Hotwire 的重置流程，速度与可用性兼得。"
+      quote: "“借助 Turbo Streams 即时反馈，用户总能清楚下一步该做什么。”"
+      quote_author: "安全团队"
+      quote_role: "Superuser 平台"

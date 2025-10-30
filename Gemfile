@@ -1,5 +1,5 @@
-# source "https://rubygems.org"
-source "https://mirrors.tuna.tsinghua.edu.cn/rubygems/"
+source "https://rubygems.org"
+# source "https://mirrors.tuna.tsinghua.edu.cn/rubygems/"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1.1"

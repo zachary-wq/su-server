@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope "(:locale)", locale: /en|zh-CN/ do
     resource :session
     resource :registration, only: %i[new create]
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
     # Defines the root path route ("/")
-    # root "posts#index"
+    root "home#index"
   end
+  
 end
